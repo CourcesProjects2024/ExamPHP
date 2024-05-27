@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: black">
     <div class="container">
-        <a class="navbar-brand" href="main"><img src="public/files/logo.png" alt="." style="width: 50px; height: 50px"></a>
+        <a class="navbar-brand" href="main"><img src="public/assets/img/logo.png" alt="." style="width: 50px; height: 50px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" 
             aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="about">Про сайт</a>
                 </li>
+                <?php if ($this->user === "admin555") {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin_page">Сторінка адміністратора</a>
+                    </li>
+                <?php }  ?>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
@@ -34,9 +39,6 @@
                 <?php } else {  ?>
                     <li class="nav-item">
                         <a class="nav-link" href="exit">Вихід</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Профіль</a>
                     </li>
                 <?php }  ?>
             </ul>

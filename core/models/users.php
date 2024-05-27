@@ -37,4 +37,38 @@ class Users extends MySqlProvider{
         $N = $result->num_rows;
         return($N === 1);
     }
+
+    public function get_users(){
+        $users = [];
+        $sql = 'select * from users';
+        $result = $this->conn->query($sql);
+        if (!$result) {
+            throw new Exeption('Помилка виконання SQL-запиту на зчитування списку користувачів');
+        } elseif ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $users[] = $row;
+            }
+        }
+        return $users;
+    }
+
+    public function del_article($aid){
+        $sql = 'delete from users where id=? ';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $aid);
+        if(!$stmt->execute()){
+            throw new Exeption('Помилка виконання SQL-запиту на видалення користувача');
+        }
+    }
+
+    public function edit_users_role($role_id, $aid){
+        $sql = 'update users set ';
+        $sql .= 'role_id=? ';
+        $sql .= 'where id=?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('ii', $role_id, $aid);
+        if(!$stmt->execute()){
+            throw new Exeption('Помилка виконання SQL-запиту на редагування користувача');
+        }
+    }
 }

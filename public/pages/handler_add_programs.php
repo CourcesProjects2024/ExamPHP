@@ -9,23 +9,27 @@ try{
     $tag2 = $_POST['tag2'];
     $tag3 = $_POST['tag3'];
 
+    if (($tag1 && ($tag1 === $tag2 || $tag1 === $tag3)) || ($tag2 && $tag2 === $tag3)) {
+        throw new Exception('Теги не повинні повторюватись.');
+    }
+
     date_default_timezone_set('Europe/Kiev');
     $publish = date('Y-m-d H:i:s');
     $photo = "public/files/{$_FILES['photo']['name']}";
 
     $type = $_FILES['photo']['type'];
     if ($type !== 'image/png' && $type !== 'image/jpeg' && $type !== 'image/gif'){
-        throw new Exeption('Файл має неграфічний формат');
+        throw new Exception('Файл має неграфічний формат');
     }
 
     $size = $_FILES['photo']['size'];
     if ($size > 10 * 1024 * 1024){
-        throw new Exeption('Розмір файлу більше 10Mb');
+        throw new Exception('Розмір файлу більше 10Mb');
     }
 
     if (!file_exists($photo)){
         if(!copy($_FILES['photo']['tmp_name'], $photo)){
-            throw new Exeption('Не вдалося завантажити файл на сервер');
+            throw new Exception('Не вдалося завантажити файл на сервер');
         }
     }
 
@@ -40,11 +44,12 @@ try{
         </script>
     ";
 }
-catch (Exeption $e){
+catch (Exception $e){
     echo "
         <script>
-            alert({$e->getMessage()});
+            alert('{$e->getMessage()}');
             window.location = 'programs';
         </script>
     ";
 }
+?>

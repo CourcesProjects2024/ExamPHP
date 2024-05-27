@@ -3,6 +3,7 @@
     $programs_model = new Programs();
     $article = $programs_model->get_article($this->parameter);
 ?>
+
 <div class="main-box">
     <div class="details_more">
         <div style="background-color: #191970; width: 220px; border-radius: 15px 0 0 15px">
