@@ -29,7 +29,7 @@
                     <div style="width: 60%">
                         <?php foreach ($users as $row): ?>
                             <?php if (($row['role_id'] == 3 || $row['role_id'] == 2) && $this->user == $row['login']): ?>
-                                <a href="needs_edit@<?=$row['id']?>" class="btn btn-warning" style="width:25%; margin: auto">
+                                <a href="needs_edit@<?=$row_needs['id']?>" class="btn btn-warning" style="width:25%; margin: auto">
                                     Повідомити
                                 </a>
                                 <a href="needs_details@<?=$row_needs['id']?>" class="btn" style="width:15%; margin: auto; 

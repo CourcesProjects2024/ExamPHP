@@ -5,8 +5,6 @@
 <?php else: ?>
     <div class="main-box">
         <div class="container">
-            <h3>Додавання програми</h3>
-            <hr>
             <form id="form2" action="handler_add_programs" method="post" enctype="multipart/form-data">
                 <div class="form-group panel">
                     <label for="name">Organization Name:</label>
@@ -64,7 +62,7 @@
                     </select>
                 </div>
                 <div class="form-group buttons">
-                    <input type="submit" id="submit" name="submit" class="btn btn-success" value="Submit">
+                    <input type="submit" id="submit" name="submit" class="btn btn-success" value="Створити">
                     <a href="programs" class="btn btn-danger">Назад</a>
                 </div>
             </form>
